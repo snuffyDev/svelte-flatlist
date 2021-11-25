@@ -171,11 +171,9 @@
 
 	.handle {
 		top: 0;
-		// filter: brightness(0.6);
-		// background-color: #191f2b00;
 		cursor: pointer;
 		width: 100%;
-		height: 5rem;
+		height: 2rem;
 		pointer-events: all;
 		position: sticky;
 		display: flex;
@@ -183,7 +181,6 @@
 		place-items: center;
 		left: 0;
 		right: 0;
-		// isolation: isolate;
 		border-top-left-radius: 1rem;
 		border-top-right-radius: 1rem;
 	}

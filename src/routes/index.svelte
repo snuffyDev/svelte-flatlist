@@ -5,7 +5,7 @@
 <script lang="ts">
 	import FlatList from '$lib/components/FlatList.svelte';
 	import Codeblock from './_Codeblock.svx';
-	import Props from './_Props.svx';
+	import Props from './_Props.md';
 
 	let visible;
 	let items = [
@@ -48,6 +48,9 @@
 <main>
 	<h1>svelte-flatlist</h1>
 	<p>A mobile-friendly, simple, and customizable draggable menu.</p>
+	<br />
+	<h2>Installation:</h2>
+	<code><pre>npm install -D svelte-flatlist</pre></code>
 	<h2>Demo</h2>
 	<div class="wrap">
 		<FlatList
