@@ -74,10 +74,6 @@
 	$: height = popper
 		? listHeight - parseInt(getComputedStyle(popper).height.split('px')[0])
 		: listHeight - popperHeight;
-	// $: console.log(` height: ${height}, height*1.5: ${height * 3}`);
-	$: console.log(
-		`listHeight: ${listHeight},posY: ${posY},popperHeight: ${height}, height*1.5: ${height * 1.5}`
-	);
 </script>
 
 <svelte:window bind:innerHeight={listHeight} />
