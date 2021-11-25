@@ -2,7 +2,7 @@
 	let width;
 	let isHidden;
 	$: mobile = width < 900;
-	$: hidden = mobile === true ? true : isHidden;
+	$: hidden = isHidden;
 	function clickOutside(node) {
 		function clickhandler(event) {
 			if (!node.contains(event.target)) {
