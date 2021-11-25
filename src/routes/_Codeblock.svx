@@ -1,0 +1,44 @@
+# <a name="usage">Usage</a>
+
+Using Svelte FlatList is very simple. Below are some usage examples.
+
+## Each Block
+
+```html
+<script>
+  import FlatList from 'svelte-flatlist';
+  let visible;
+  const items = [0,1,2,3,4,5];
+
+  function handleClose(){
+    visible = false;
+  }
+</script>
+
+<FlatList on:close={handleClose} bind:visible>
+  {#each items as item}
+    <span>{item}</span>
+  {/each}
+</Flatlist>
+```
+
+## Manually list items
+
+```html
+<script>
+  import FlatList from 'svelte-flatlist';
+
+  let visible;
+  function handleClose(){
+    visible = false;
+	}
+</script>
+
+<FlatList bind:visible on:close={handleClose}>
+  <span>item 1</span>
+  <span>item 2</span>
+  <span>item 3</span>
+  <span>item 4</span>
+</Flatlist>
+
+```
