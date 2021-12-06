@@ -1,11 +1,16 @@
 {
 	"name": "svelte-flatlist",
-	"version": "0.1.5",
+	"version": "0.2.3",
+	"repository": {
+		"url": "https://github.com/snuffyDev/svelte-flatlist"
+	},
 	"scripts": {
 		"dev": "svelte-kit dev --host",
 		"build": "svelte-kit build",
 		"deploy:docs": "npm run build && netlify deploy --prod",
 		"package": "svelte-kit package",
+		"publish": "npm run package && npm publish ./package",
+		"publish:all": "npm run deploy:docs && npm run package && npm publish ./package",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",

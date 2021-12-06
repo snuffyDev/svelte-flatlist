@@ -3,58 +3,27 @@
 </script>
 
 <script lang="ts">
-	import FlatList from '$lib/components/FlatList.svelte';
+	import FlatList from '$lib/FlatList.svelte';
 	import Codeblock from './_Codeblock.svx';
-	import Props from './_Props.md';
-
-	let visible;
-	let items = [
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		''
-	];
+	import GHLink from './_GHLink.svelte';
+	import Props from './_Props.svelte.md';
+	import Installation from './_Install.svelte.md';
+	let visible = false;
+	let items = new Array(32).fill(false).map((item, i) => i);
 	let position;
 </script>
 
 <main>
 	<h1>svelte-flatlist</h1>
 	<p>A mobile-friendly, simple, and customizable draggable menu.</p>
+	<GHLink />
+
 	<br />
-	<h2>Installation:</h2>
-	<code><pre>npm install -D svelte-flatlist</pre></code>
+	<Installation />
+
 	<h2>Demo</h2>
 	<div class="wrap">
 		<FlatList
-			class=""
 			overflow="auto"
 			zIndex={2}
 			{position}
@@ -97,19 +66,13 @@
 <style lang="scss">
 	.button-row {
 		display: inline-flex;
+		justify-content: space-between;
+		width: 100%;
 	}
 	main {
-		display: flex;
-		flex-direction: column;
 		margin: 0 auto;
 		max-width: 720px;
-		// background-color: #f2f2f2f2;
 		padding: 0 1rem 1rem 1rem;
-		// min-height: 100%;
-		position: relative;
-		margin: 0 auto;
-		// padding: var(--nav-h) 0 0 0;
-		overflow-x: hidden;
 	}
 	.wrap {
 		position: relative;
@@ -140,6 +103,7 @@
 		padding: 1rem;
 		background: #46464673;
 	}
+
 	h1 {
 		border-bottom: 1px #ddd solid;
 		padding-bottom: 1rem;

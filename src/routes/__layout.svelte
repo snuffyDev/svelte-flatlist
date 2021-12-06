@@ -1,5 +1,6 @@
 <script>
 	import TableOfContents from './_TableOfContents.svelte';
+	import GHLink from './_GHLink.svelte';
 </script>
 
 <TableOfContents />
@@ -9,19 +10,15 @@
 	html,
 	body {
 		box-sizing: border-box;
-		// height: auto;
+		// height: 100%;
+		position: relative;
 		min-height: 100vh;
-		-webkit-overflow-scrolling: touch;
 		// background-color: #97a1ac;
 		font-size: 1rem;
 		-webkit-text-size-adjust: 100%;
 		-ms-overflow-style: -ms-autohiding-scrollbar;
 		box-sizing: border-box;
-		border-collapse: collapse;
-		position: relative;
 		margin: 0 auto;
-		// padding: var(--nav-h) 0 0 0;
-		overflow-x: hidden;
 	}
 
 	html {
@@ -35,8 +32,9 @@
 		-webkit-tap-highlight-color: transparent;
 		-webkit-font-smoothing: antialiased;
 	}
-	#svelte {
-		overflow: hidden;
+
+	a.link {
+		color: cornflowerblue;
 	}
 	table {
 		border-width: 1px;
@@ -44,22 +42,27 @@
 		// border-color: hsl(0deg 0% 67%);
 		border-collapse: separate;
 		border-spacing: 0;
-
+		border-color: #333;
 		font-size: 1.1rem;
 	}
 	th {
-		background-color: rgba(0, 0, 0, 0.438);
+		background-color: rgba(141, 141, 141, 0.171);
 	}
 	td,
 	th {
-		padding: 0.8rem;
+		border: 1px solid rgba(102, 102, 102, 0.11);
+		padding: 0.5rem;
 	}
 	tr {
 		// padding: 1rem 0;
 	}
 	tr:nth-child(even) {
-		background-color: rgba(242, 242, 242, 0.021);
-		color: rgb(255, 255, 255);
+		background-color: rgba(145, 145, 145, 0.185);
+	}
+	pre {
+		padding: 0.8rem;
+
+		overflow: auto;
 	}
 	*,
 	*::before,

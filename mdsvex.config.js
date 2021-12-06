@@ -9,7 +9,7 @@ const config = {
 	},
 	highlight: {
 		highlighter: async (code, lang = "svelte") => {
-			const highlighter = await shiki.getHighlighter({ theme: 'github-dark-dimmed' });
+			const highlighter = await shiki.getHighlighter({ theme: 'min-dark' });
 			const highlightedCode = escapeSvelte(highlighter.codeToHtml(code, lang));
 			return `{@html \`${highlightedCode}\` }`;
 		},

@@ -1,26 +1,20 @@
 <script lang="ts">
+	import clickOutside from '$lib/_actions/clickOutside';
+	import { fly } from 'svelte/transition';
+
 	let width;
-	let isHidden;
-	$: mobile = width < 900;
+	let isHidden = true;
 	$: hidden = isHidden;
-	function clickOutside(node) {
-		function clickhandler(event) {
-			if (!node.contains(event.target)) {
-				node.dispatchEvent(new CustomEvent('outside'));
-			}
-		}
-		window.addEventListener('click', clickhandler, { capture: true, passive: true });
-		return {
-			destroy: () => {
-				window.removeEventListener('click', clickhandler);
-			}
-		};
-	}
 </script>
 
 <svelte:window bind:innerWidth={width} />
 {#if !hidden}
-	<aside use:clickOutside on:outside={() => (isHidden = true)}>
+	<aside
+		use:clickOutside
+		in:fly={{ x: -50 }}
+		out:fly={{ x: -50 }}
+		on:outside={() => (isHidden = true)}
+	>
 		<ul>
 			<li><a href="#usage">Usage</a></li>
 			<li><a href="#props">Props</a></li>
@@ -29,7 +23,7 @@
 	</aside>
 {:else}
 	<button
-		class="top-left"
+		class="top-right"
 		on:click={() => {
 			isHidden = !isHidden;
 		}}>&equiv;</button
@@ -37,11 +31,12 @@
 {/if}
 
 <style lang="scss">
-	.top-left {
+	.top-right {
 		position: fixed;
 		z-index: 5;
-		left: 0;
+		right: 0;
 		top: 0;
+		background: rgba(31, 31, 31, 0.288);
 		width: 3rem;
 		height: 3rem;
 		font-size: 2rem;
@@ -53,9 +48,11 @@
 	aside {
 		position: fixed;
 		left: 0;
-		top: 0;
+
 		width: 8rem;
 		height: 100%;
+		z-index: 1;
+		background: #302b36;
 	}
 	ul,
 	li {
@@ -69,5 +66,7 @@
 	}
 	a {
 		font-size: large;
+		color: #f2f2f2;
+		text-underline-offset: 0.075rem;
 	}
 </style>

@@ -3,6 +3,8 @@
 Using Svelte FlatList is very simple. Below are some usage examples.
 
 ## Each Block
+*See this in action at the Svelte REPL!*
+<a class="link" href="https://svelte.dev/repl/2cfb8d8b8ff2447688874a2e0dacb731?version=3.44.2">Link</a>
 
 ```html
 <script>
@@ -15,14 +17,48 @@ Using Svelte FlatList is very simple. Below are some usage examples.
   }
 </script>
 
+<button on:click={()=>(visible=true)}>
+	Click me!
+</button>
+
 <FlatList on:close={handleClose} bind:visible>
   {#each items as item}
     <span>{item}</span>
   {/each}
-</Flatlist>
+</FlatList>
+```
+
+## Customize the theme
+*See this in action at the Svelte REPL!*
+<a class="link" href="https://svelte.dev/repl/dbe96ccc7e974dee80ce57a45d17ae2e?version=3.44.2">Link</a>
+
+```html
+<script>
+  import FlatList from 'svelte-flatlist';
+  let visible;
+  const items = [0,1,2,3,4,5];
+
+  function handleClose(){
+    visible = false;
+  }
+</script>
+
+<button on:click={()=>(visible=true)}>
+	Click me!
+</button>
+
+<FlatList style={{bgColor: '#424242', handle: {fgColor:'#f2f2f2', height: '2rem', bgColor: '#000000'}}} on:close={handleClose} bind:visible>
+    <span>item 1</span>
+    <span>item 2</span>
+    <span>item 3</span>
+    <span>item 4</span>
+    <span>item 5</span>
+</FlatList>
 ```
 
 ## Manually list items
+*See this in action at the Svelte REPL!*
+<a class="link" href="https://svelte.dev/repl/dbe96ccc7e974dee80ce57a45d17ae2e?version=3">Link</a>
 
 ```html
 <script>
@@ -34,11 +70,14 @@ Using Svelte FlatList is very simple. Below are some usage examples.
 	}
 </script>
 
+<button on:click={()=>(visible=true)}>
+	Click me!
+</button>
+
 <FlatList bind:visible on:close={handleClose}>
   <span>item 1</span>
   <span>item 2</span>
   <span>item 3</span>
   <span>item 4</span>
-</Flatlist>
-
+</FlatList>
 ```
