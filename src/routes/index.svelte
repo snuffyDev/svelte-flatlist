@@ -10,7 +10,18 @@
 	import Installation from './_Install.svelte.md';
 	let visible = false;
 	let items = new Array(32).fill(false).map((item, i) => i);
+	let style = {
+		bgColor: '#f2f2f2',
+		handle: {
+			bgColor: 'transparent',
+			fgColor: 'hsl(0deg 0% 67%)',
+			height: '5rem'
+		}
+	};
 	let position;
+	let value;
+	let height;
+	$: console.log(value);
 </script>
 
 <main>
@@ -23,9 +34,29 @@
 
 	<h2>Demo</h2>
 	<div class="wrap">
+		<div class="style-demo">
+			<label>Base Background Color: <input type="color" bind:value={style.bgColor} /></label>
+			<label
+				>Handle Background Color: <input type="color" bind:value={style.handle.bgColor} /></label
+			>
+			<label
+				>Handle Foreground Color: <input type="color" bind:value={style.handle.fgColor} /></label
+			>
+			<label>
+				Handle Height (req. CSS size unit): <form on:submit|preventDefault={() => {}}>
+					<input
+						type="text"
+						pattern="[-+]?[0-9]*[.,]?[0-9]+?(rem|px|em|vh|vw|vmax|vmin|%|pt|ch)"
+						placeholder="5rem"
+						bind:value={style.handle.height}
+					/>
+				</form>
+			</label>
+		</div>
 		<FlatList
 			overflow="auto"
 			zIndex={2}
+			bind:style
 			{position}
 			on:close={({ detail }) => {
 				// visible = false;
@@ -66,6 +97,25 @@
 </main>
 
 <style lang="scss">
+	input[type='text'] {
+		padding: 0.5rem 0.8rem;
+		font-size: 1.1rem;
+	}
+	label {
+		line-height: 1.5;
+		margin-bottom: 0.25em;
+	}
+	.style-demo {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		background: rgba(88, 88, 88, 0.199);
+		padding: 0.8rem;
+		border-radius: 1rem;
+		gap: 0.8rem;
+		border: 1px #666 solid;
+		margin-bottom: 1.2rem;
+	}
 	.button-row {
 		display: inline-flex;
 		justify-content: space-between;

@@ -36,14 +36,18 @@
 		z-index: 5;
 		right: 0;
 		top: 0;
-		background: rgba(31, 31, 31, 0.288);
+		background: rgba(88, 88, 88, 0.473);
 		width: 3rem;
 		height: 3rem;
+		border-radius: 9999rem;
 		font-size: 2rem;
 		display: inline-flex;
 		place-items: center;
 		justify-content: center;
 		border: none;
+		@media (prefers-color-scheme: light) {
+			color: rgb(46, 46, 46);
+		}
 	}
 	aside {
 		position: fixed;
@@ -65,7 +69,12 @@
 	}
 	a {
 		font-size: large;
-		color: #f2f2f2;
-		text-underline-offset: 0.075rem;
+		color: #dadada;
+		text-decoration: none;
+		&:hover {
+			color: #f8f8f8;
+			text-decoration: underline solid 0.0625rem;
+			text-underline-offset: 0.075rem;
+		}
 	}
 </style>

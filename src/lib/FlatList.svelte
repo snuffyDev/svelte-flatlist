@@ -22,7 +22,7 @@
 		handle: {
 			bgColor: 'transparent',
 			fgColor: 'hsl(0deg 0% 67%)',
-			height: '3rem'
+			height: '5rem'
 		}
 	};
 
@@ -79,6 +79,7 @@
 
 	// Get the estimated position of the Top of the list element
 	$: height = listHeight - popperHeight;
+	$: visible === true && (posY = 0);
 </script>
 
 <svelte:window bind:innerHeight={listHeight} />
@@ -143,6 +144,7 @@
 		max-width: 100%;
 		width: 100%;
 		height: 100%;
+		user-select: none;
 
 		z-index: 2;
 		isolation: isolate;
@@ -186,17 +188,16 @@
 		flex-direction: column;
 		gap: var(--gap);
 		padding: 0.8em 0.8em;
+		overscroll-behavior: none;
 		// height: inherit;
 		overflow-y: var(--overflow);
 		// width: calc(100%);
 	}
 
 	.handle {
-		top: 0;
 		cursor: pointer;
 		width: 100%;
 		height: var(--height, 5rem);
-		pointer-events: all;
 		position: sticky;
 		background-color: var(--bg);
 		display: flex;
@@ -218,6 +219,7 @@
 		width: 60%;
 		border-radius: 999999rem;
 		pointer-events: none;
+		position: relative;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 

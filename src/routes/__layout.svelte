@@ -57,8 +57,9 @@
 		// border-color: hsl(0deg 0% 67%);
 		border-collapse: separate;
 		border-spacing: 0;
-		border-color: #333;
-		font-size: 1.1rem;
+		border-color: rgba(51, 51, 51, 0.521);
+		font-size: 1rem;
+		border-radius: 0.5rem;
 	}
 	th {
 		background-color: rgba(141, 141, 141, 0.171);
@@ -76,6 +77,7 @@
 	}
 	pre {
 		padding: 0.8rem;
+		border-radius: 0.5rem;
 
 		overflow: auto;
 	}

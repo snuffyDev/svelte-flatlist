@@ -6,7 +6,7 @@ export default function draggable(node: HTMLElement) {
 	function preventScroll(event: UIEvent) {
 		event.preventDefault();
 	}
-	function handleMousedown(event) {
+	function handleDragStart(event) {
 		const { top, height } = node.getBoundingClientRect();
 
 		initTop = top;
@@ -35,13 +35,13 @@ export default function draggable(node: HTMLElement) {
 			})
 		);
 
-		window.addEventListener('touchmove', handleMousemove, { passive: true });
-		window.addEventListener('touchend', handleMouseup, { passive: true });
-		window.addEventListener('mousemove', handleMousemove);
-		window.addEventListener('mouseup', handleMouseup, { passive: true });
+		window.addEventListener('touchmove', handleDrag, { passive: true });
+		window.addEventListener('touchend', handleDragEnd, { passive: true });
+		window.addEventListener('mousemove', handleDrag);
+		window.addEventListener('mouseup', handleDragEnd, { passive: true });
 	}
 
-	function handleMousemove(event) {
+	function handleDrag(event) {
 		if (event.type == 'touchmove') {
 			/* Probably overkill, but this should hopefully
 				 help performance on low-end touch devices
@@ -67,7 +67,7 @@ export default function draggable(node: HTMLElement) {
 		}
 	}
 
-	function handleMouseup(event) {
+	function handleDragEnd(event) {
 		if (event.type == 'touchend') {
 			y = event.changedTouches[0].clientY;
 		} else {
@@ -78,32 +78,32 @@ export default function draggable(node: HTMLElement) {
 				detail: { y }
 			})
 		);
+		y = 0;
 		if (event.type == 'touchend') {
 			/* Removes the scroll block from the body element when finished dragging,
 				 reverts to the initial overflow value set on the HTML node, along with
 				 some (probably unneeded) cleanup with the RAF.
 			*/
-
 			document.body.removeEventListener('scroll', preventScroll, { capture: true });
 			document.querySelector('html').style.overflow = initOverflow;
 			cancelAnimationFrame(frame);
 		}
-		window.removeEventListener('touchmove', handleMousemove);
-		window.removeEventListener('touchend', handleMouseup);
-		window.removeEventListener('mousemove', handleMousemove);
-		window.removeEventListener('mouseup', handleMouseup);
+		window.removeEventListener('touchmove', handleDrag);
+		window.removeEventListener('touchend', handleDragEnd);
+		window.removeEventListener('mousemove', handleDrag);
+		window.removeEventListener('mouseup', handleDragEnd);
 	}
 
-	node.addEventListener('touchstart', handleMousedown, { passive: true });
-	node.addEventListener('mousedown', handleMousedown, { passive: true });
+	node.addEventListener('touchstart', handleDragStart, { passive: true });
+	node.addEventListener('mousedown', handleDragStart, { passive: true });
 
 	return {
 		destroy: () => {
 			if (frame) {
 				cancelAnimationFrame(frame);
 			}
-			node.removeEventListener('touchstart', handleMousedown);
-			node.removeEventListener('mousedown', handleMousedown);
+			node.removeEventListener('touchstart', handleDragStart);
+			node.removeEventListener('mousedown', handleDragStart);
 		}
 	};
 }
