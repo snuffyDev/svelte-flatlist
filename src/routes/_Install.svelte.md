@@ -1,4 +1,4 @@
-# Installation
+# <a id="install">Installation</a>
 
 ```bash
 npm install -D svelte-flatlist    // npm

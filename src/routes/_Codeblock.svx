@@ -1,4 +1,4 @@
-# <a name="usage">Usage</a>
+# <a id="usage" class="wikilink" href="#usage">Usage</a>
 
 Using Svelte FlatList is very simple. Below are some usage examples.
 

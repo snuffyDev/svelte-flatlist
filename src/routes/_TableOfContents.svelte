@@ -48,16 +48,15 @@
 	aside {
 		position: fixed;
 		left: 0;
-
-		width: 8rem;
+		top: 0;
+		width: 12rem;
 		height: 100%;
 		z-index: 1;
 		background: #302b36;
 	}
-	ul,
-	li {
-		padding: 0;
-		text-align: center;
+	ul {
+		padding: 0 0 0 0.8rem;
+		// text-align: center;
 		list-style: none;
 	}
 	li {

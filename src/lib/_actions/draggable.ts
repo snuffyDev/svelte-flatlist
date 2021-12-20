@@ -69,15 +69,6 @@ export default function draggable(node: HTMLElement) {
 
 	function handleMouseup(event) {
 		if (event.type == 'touchend') {
-			/* Removes the scroll block from the body element when finished dragging,
-				 reverts to the initial overflow value set on the HTML node, along with
-				 some (probably unneeded) cleanup with the RAF.
-			*/
-			cancelAnimationFrame(frame);
-
-			document.body.removeEventListener('scroll', preventScroll, { capture: true });
-			document.querySelector('html').style.overflow = initOverflow;
-
 			y = event.changedTouches[0].clientY;
 		} else {
 			y = event.clientY - initTop - 8;
@@ -87,7 +78,16 @@ export default function draggable(node: HTMLElement) {
 				detail: { y }
 			})
 		);
+		if (event.type == 'touchend') {
+			/* Removes the scroll block from the body element when finished dragging,
+				 reverts to the initial overflow value set on the HTML node, along with
+				 some (probably unneeded) cleanup with the RAF.
+			*/
 
+			document.body.removeEventListener('scroll', preventScroll, { capture: true });
+			document.querySelector('html').style.overflow = initOverflow;
+			cancelAnimationFrame(frame);
+		}
 		window.removeEventListener('touchmove', handleMousemove);
 		window.removeEventListener('touchend', handleMouseup);
 		window.removeEventListener('mousemove', handleMousemove);

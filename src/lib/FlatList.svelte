@@ -52,9 +52,10 @@
 				open();
 			} else {
 				close();
+				posY = 0;
 			}
-			sliding = false;
 		}
+		sliding = false;
 	}
 	function trackMovement({ y }) {
 		if (y <= listHeight && y >= 0) {
@@ -71,8 +72,8 @@
 	}
 	function close() {
 		sliding = false;
-		posY = 0;
 		hideEvent();
+		posY = 0;
 	}
 	const dispatch = createEventDispatcher();
 

@@ -36,6 +36,19 @@
 	a.link {
 		color: cornflowerblue;
 	}
+	a.wikilink {
+		color: #1a1a1a;
+		text-decoration: none;
+		&:visited {
+			color: inherit;
+		}
+		&:hover {
+			text-decoration: underline 0.0625rem solid;
+		}
+		@media (prefers-color-scheme: dark) {
+			color: #f1f1f1;
+		}
+	}
 	table {
 		border-width: 1px;
 		border-style: solid;

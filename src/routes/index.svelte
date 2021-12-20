@@ -59,6 +59,8 @@
 			>
 		</div>
 	</div>
+	<br />
+	<br />
 	<Codeblock />
 	<Props />
 </main>
