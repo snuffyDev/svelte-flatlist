@@ -47,7 +47,7 @@ type HandleStyle = {
 };
 ```
 
-### More Info:
+### More Info
 
 
 | Style Props | Description                                          |

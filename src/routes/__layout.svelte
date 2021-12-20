@@ -1,8 +1,10 @@
 <script>
 	import TableOfContents from './_TableOfContents.svelte';
-	import GHLink from './_GHLink.svelte';
 </script>
 
+<svelte:head>
+	<title>Svelte-Flatlist docs</title>
+</svelte:head>
 <TableOfContents />
 <slot />
 

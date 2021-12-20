@@ -117,7 +117,42 @@ _See this in action at the Svelte REPL!_
 
 ## Style Properties
 
-<br/>
+Svelte-Flatlist allows you to modify the styles to fit your needs best using `style` prop.
+
+Example:
+
+```html
+<Flatlist
+  style={{
+    bgColor: "#424242",
+    handle: {
+      height: "3rem",
+      bgColor: "#121212",
+      fgColor: "#fefefe"
+    }
+  }}
+>
+```
+
+### ```style``` Type
+
+The type of the ```style``` prop:
+
+```typescript
+type ListStyle = {
+  bgColor?: string;
+  handle?: HandleStyle;
+};
+
+type HandleStyle = {
+  bgColor?: string;
+  fgColor?: string;
+  height?: string;
+};
+```
+
+### More Info
+
 
 | Style Props | Description                                          |
 | ----------- | ---------------------------------------------------- |
