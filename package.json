@@ -1,9 +1,22 @@
 {
 	"name": "svelte-flatlist",
-	"version": "0.2.4",
+	"version": "0.2.6",
 	"repository": {
 		"url": "https://github.com/snuffyDev/svelte-flatlist"
 	},
+	"author": "snuffydev",
+	"description": "A draggable, customizable, mobile-friendly menu that's easy to use for Svelte.",
+	"keywords": [
+		"svelte",
+		"svelte3",
+		"svelte-component",
+		"mobile",
+		"drawer",
+		"draggable",
+		"sveltejs",
+		"menu",
+		"flatlist"
+	],
 	"scripts": {
 		"dev": "svelte-kit dev --host",
 		"build": "svelte-kit build",
